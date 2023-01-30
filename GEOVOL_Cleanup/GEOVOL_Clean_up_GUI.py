@@ -118,7 +118,7 @@ class MyWindow(QMainWindow):
         self.button4.clicked.connect(self.removeTifClicked)
         self.button5.clicked.connect(self.restartClicked)
 
-    #Method to clean up RAW Data in GEOVOL
+    #Method when user chooses Clean RAW Data option
     def cleanupRawDataClicked(self):  
         self.button2.hide()
         self.button3.hide()
@@ -141,6 +141,7 @@ class MyWindow(QMainWindow):
         self.label2.setText("CSV file 'deletedlist' created")
         self.update() 
 
+    #Method when user chooses 'Remove .LAS' option   
     def removeLasClicked(self):
         self.button2.hide()
         self.button3.hide()
@@ -157,7 +158,8 @@ class MyWindow(QMainWindow):
         self.label2.move(100, 200)
         self.label2.setText("...done.")
         self.update()
-
+    
+    #Method when user chooses 'Remove .TIF' option
     def removeTifClicked(self):
         self.button2.hide()
         self.button3.hide()
@@ -174,7 +176,8 @@ class MyWindow(QMainWindow):
         self.label2.move(100, 200)
         self.label2.setText("...done.")
         self.update()
-        
+    
+    #Method to clean up RAW Data in GEOVOL
     def cleanupRawData(self):
         self.current_dir = self.root_path
 
@@ -203,7 +206,8 @@ class MyWindow(QMainWindow):
                             except Exception:
                                 pass
         self.createList()
-
+    
+    #Method to remove .las files in GEOVOL
     def removeLasFiles(self):
         for _root, _dirs, _files in os.walk(self.root_path, topdown=False):
             for _d in _dirs:
@@ -213,7 +217,8 @@ class MyWindow(QMainWindow):
                             base, ext = os.path.splitext(os.path.join(root, f))
                             if ext == '.las':
                                os.unlink(os.path.join(root, f))
-
+    
+    #Method to remove .tif files in GEOVO
     def removeTifFiles(self):
         for _root, _dirs, _files in os.walk(self.root_path, topdown=False):
             for _d in _dirs:
@@ -232,6 +237,7 @@ class MyWindow(QMainWindow):
             for item in self.deleted_list:
                 writer.writerow([item])
 
+    #Don't know if I really need this method? I'm going to keep it in here just in case...            
     def readonly_handler(self, func, path, execinfo): 
         os.chmod(path, 128) 
         func(path)
