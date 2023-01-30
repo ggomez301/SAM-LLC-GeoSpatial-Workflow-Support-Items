@@ -4,7 +4,7 @@
 ##  SAM LLC
 ##  This python GUI script looks at EIF files and concatenates all files into one EIF file that can
 ##   be opened as a TXT file. Can be used for multiple file locations or if wanted put general path
-##   in and script can look in many different files to read EIF files.
+##   in and script can look in various existing files to read EIF files.
 ##   Instructions:
 ##   1. Copy directory of path needed to concatenate EIF files.
 ##   2. Paste the directory and hit submit.
